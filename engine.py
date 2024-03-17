@@ -18,6 +18,8 @@ import nest_asyncio
 nest_asyncio.apply()
 from transformers import GenerationConfig, BitsAndBytesConfig
 import torch
+from dotenv import load_dotenv
+load_dotenv()
 
 
 def local_llm_model(MODEL_NAME, embed_name, type_ = "local", token_counter = False):
@@ -38,11 +40,9 @@ def local_llm_model(MODEL_NAME, embed_name, type_ = "local", token_counter = Fal
             device_map="auto",
             tokenizer_kwargs={
                 "max_length": 4096,
-                "token" : "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",
                 # 'trust_remote_code' : True # qwen
                 },
             model_kwargs={
-                "token" : "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",
                 "quantization_config": quantization_config, # not solar
                 # 'trust_remote_code' : True # qwen,
                 # 'torch_dtype' : torch.float16, # solar
