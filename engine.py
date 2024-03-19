@@ -179,8 +179,8 @@ def retriever_engine(
         final_retriever = QueryFusionRetriever(
             [retriever],#, bm25_retriever],
             # index.as_retriever(similarity_top_k=top_k),
-            similarity_top_k=top_k-20,
-            num_queries=3,  # set this to 1 to disable query generation
+            similarity_top_k=top_k,
+            num_queries=4,  # set this to 1 to disable query generation
             mode="reciprocal_rerank",
             use_async=True,
             verbose=True,
